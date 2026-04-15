@@ -1,0 +1,155 @@
+{
+  "Common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "Routes": {
+    "home": "Home",
+    "workflows": "Workflows",
+    "credentials": "Credentials",
+    "billing": "Billing",
+    "settings": "Settings"
+  },
+  "Header": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "billing": "Billing",
+    "helpSupport": "Help & Support",
+    "logOut": "Log out"
+  },
+  "Settings": {
+    "title": "Settings",
+    "description": "Manage your preferences.",
+    "appearance": {
+      "title": "Appearance",
+      "description": "Choose your preferred theme.",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Choose your preferred language.",
+      "en": "English",
+      "vi": "Tiếng Việt"
+    }
+  },
+  "Workflows": {
+    "page": {
+      "title": "Workflows",
+      "description": "Manage and run your automation workflows.",
+      "newWorkflow": "New workflow"
+    },
+    "table": {
+      "name": "Name",
+      "status": "Status",
+      "credits": "Credits",
+      "lastRun": "Last run",
+      "created": "Created",
+      "never": "—",
+      "edit": "Edit workflow"
+    },
+    "empty": {
+      "title": "No workflows yet",
+      "description": "Create your first workflow to get started.",
+      "cta": "New workflow"
+    },
+    "error": {
+      "title": "Failed to load workflows",
+      "description": "Something went wrong while fetching your workflows.",
+      "cta": "Try again"
+    },
+    "create": {
+      "title": "Create workflow",
+      "description": "Give your workflow a name and an optional description.",
+      "namePlaceholder": "My workflow",
+      "descriptionPlaceholder": "What does this workflow do?",
+      "nameLabel": "Name",
+      "descriptionLabel": "Description",
+      "descriptionOptional": "(optional)",
+      "submit": "Create workflow",
+      "submitting": "Creating...",
+      "nameRequired": "Name is required",
+      "nameMax": "Max 50 characters",
+      "descriptionMax": "Max 200 characters",
+      "successToast": "Workflow created successfully"
+    },
+    "actions": {
+      "archive": "Delete",
+      "archiveConfirmTitle": "Delete workflow?",
+      "archiveConfirmDescription": "This workflow will be deleted and won't run anymore. Type",
+      "forConfirmation_txt": "to confirm",
+      "archiveConfirm": "Delete",
+      "archiveCancel": "Cancel",
+      "archiveSuccess": "Workflow deleted",
+      "archiveError": "Failed to delete workflow",
+      "archiveInputPlaceholder": "Type the workflow name to confirm",
+      "moreOptions": "More options",
+      "edit": "Edit"
+    },
+    "edit": {
+      "title": "Edit workflow",
+      "description": "Update the name and description of your workflow.",
+      "nameLabel": "Name",
+      "namePlaceholder": "My workflow",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "What does this workflow do?",
+      "descriptionOptional": "(optional)",
+      "submit": "Save changes",
+      "submitting": "Saving...",
+      "nameRequired": "Name is required",
+      "nameMax": "Max 50 characters",
+      "descriptionMax": "Max 200 characters",
+      "successToast": "Workflow updated"
+    }
+  },
+  "WorkflowEditor": {
+    "loading": {
+      "badge": "Loading editor",
+      "title": "Hang tight.",
+      "description": "We're loading your workflow editor. This will only take a moment."
+    },
+    "tasks": {
+      "launchBrowser": "Launch browser",
+      "pageToHtml": "Get raw HTML from web page",
+      "extractText": "Extract text",
+      "extractElement": "Extract element",
+      "readProperty": "Read JSON property",
+      "addProperty": "Add JSON property",
+      "mergeJson": "Merge JSON",
+      "zipArrays": "Zip arrays"
+    },
+    "taskMenu": {
+      "title": "Tasks",
+      "categories": {
+        "BROWSER": "Browser",
+        "DATA_EXTRACTION": "Data extraction"
+      }
+    },
+    "inputs": {
+      "enterValue": "Enter value here",
+      "browserInstance": "Will be provided by the previous node"
+    }
+  },
+  "Dashboard": {
+    "title": "Hello!"
+  },
+  "NotFound": {
+    "code": "404",
+    "badge": "Page not found",
+    "title": "Lost in the void.",
+    "description": "The page you're looking for doesn't exist or has been moved somewhere else.",
+    "cta": "Back to home"
+  },
+  "Error": {
+    "code": "error",
+    "badge": "Something went wrong",
+    "title": "Unexpected crash.",
+    "description": "An error occurred while rendering this page. You can try again or go back home.",
+    "digest": "Digest",
+    "cta": "Try again",
+    "homeCta": "Back to home"
+  }
+}

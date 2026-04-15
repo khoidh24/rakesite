@@ -1,0 +1,155 @@
+{
+  "Common": {
+    "close": "Đóng",
+    "cancel": "Hủy",
+    "save": "Lưu"
+  },
+  "Routes": {
+    "home": "Trang chủ",
+    "workflows": "Workflows",
+    "credentials": "Thông tin xác thực",
+    "billing": "Thanh toán",
+    "settings": "Cài đặt"
+  },
+  "Header": {
+    "profile": "Hồ sơ",
+    "settings": "Cài đặt",
+    "notifications": "Thông báo",
+    "billing": "Thanh toán",
+    "helpSupport": "Trợ giúp & Hỗ trợ",
+    "logOut": "Đăng xuất"
+  },
+  "Settings": {
+    "title": "Cài đặt",
+    "description": "Quản lý tùy chọn của bạn.",
+    "appearance": {
+      "title": "Giao diện",
+      "description": "Chọn theme bạn muốn sử dụng.",
+      "light": "Sáng",
+      "dark": "Tối",
+      "system": "Hệ thống"
+    },
+    "language": {
+      "title": "Ngôn ngữ",
+      "description": "Chọn ngôn ngữ bạn muốn sử dụng.",
+      "en": "English",
+      "vi": "Tiếng Việt"
+    }
+  },
+  "Workflows": {
+    "page": {
+      "title": "Workflows",
+      "description": "Quản lý và chạy các workflow tự động của bạn.",
+      "newWorkflow": "Tạo Workflow"
+    },
+    "table": {
+      "name": "Tên",
+      "status": "Trạng thái",
+      "credits": "Credits",
+      "lastRun": "Lần chạy cuối",
+      "created": "Ngày tạo",
+      "never": "—",
+      "edit": "Chỉnh sửa workflow"
+    },
+    "empty": {
+      "title": "Chưa có workflow nào",
+      "description": "Tạo workflow đầu tiên của bạn để bắt đầu.",
+      "cta": "Tạo workflow"
+    },
+    "error": {
+      "title": "Không thể tải workflows",
+      "description": "Đã xảy ra lỗi khi tải danh sách workflows của bạn.",
+      "cta": "Thử lại"
+    },
+    "create": {
+      "title": "Tạo workflow",
+      "description": "Đặt tên và mô tả cho workflow của bạn.",
+      "namePlaceholder": "Workflow của tôi",
+      "descriptionPlaceholder": "Workflow này làm gì?",
+      "nameLabel": "Tên",
+      "descriptionLabel": "Mô tả",
+      "descriptionOptional": "(tùy chọn)",
+      "submit": "Tạo workflow",
+      "submitting": "Đang tạo...",
+      "nameRequired": "Tên workflow là bắt buộc",
+      "nameMax": "Tối đa 50 ký tự",
+      "descriptionMax": "Tối đa 200 ký tự",
+      "successToast": "Tạo workflow thành công"
+    },
+    "actions": {
+      "archive": "Xóa",
+      "archiveConfirmTitle": "Xóa workflow?",
+      "archiveConfirmDescription": "Workflow này sẽ bị xóa và không còn chạy nữa. Nhập",
+      "forConfirmation_txt": "để xác nhận",
+      "archiveConfirm": "Xóa",
+      "archiveCancel": "Hủy",
+      "archiveSuccess": "Đã xóa workflow",
+      "archiveError": "Không thể xóa workflow",
+      "archiveInputPlaceholder": "Nhập tên workflow để xác nhận",
+      "moreOptions": "Thêm tùy chọn",
+      "edit": "Chỉnh sửa"
+    },
+    "edit": {
+      "title": "Chỉnh sửa workflow",
+      "description": "Cập nhật tên và mô tả cho workflow của bạn.",
+      "nameLabel": "Tên",
+      "namePlaceholder": "Workflow của tôi",
+      "descriptionLabel": "Mô tả",
+      "descriptionPlaceholder": "Workflow này làm gì?",
+      "descriptionOptional": "(tùy chọn)",
+      "submit": "Lưu thay đổi",
+      "submitting": "Đang lưu...",
+      "nameRequired": "Tên workflow là bắt buộc",
+      "nameMax": "Tối đa 50 ký tự",
+      "descriptionMax": "Tối đa 200 ký tự",
+      "successToast": "Đã cập nhật workflow"
+    }
+  },
+  "WorkflowEditor": {
+    "loading": {
+      "badge": "Đang tải trình chỉnh sửa",
+      "title": "Chờ một chút.",
+      "description": "Chúng tôi đang tải trình chỉnh sửa workflow. Sẽ chỉ mất một lúc."
+    },
+    "tasks": {
+      "launchBrowser": "Mở trình duyệt",
+      "pageToHtml": "Lấy HTML thuần từ trang web",
+      "extractText": "Trích xuất văn bản",
+      "extractElement": "Trích xuất phần tử",
+      "readProperty": "Đọc thuộc tính JSON",
+      "addProperty": "Thêm thuộc tính JSON",
+      "mergeJson": "Gộp JSON",
+      "zipArrays": "Gộp mảng theo hàng"
+    },
+    "taskMenu": {
+      "title": "Tasks",
+      "categories": {
+        "BROWSER": "Trình duyệt",
+        "DATA_EXTRACTION": "Trích xuất dữ liệu"
+      }
+    },
+    "inputs": {
+      "enterValue": "Nhập giá trị",
+      "browserInstance": "Sẽ được cung cấp từ node trước"
+    }
+  },
+  "Dashboard": {
+    "title": "Xin chào!"
+  },
+  "NotFound": {
+    "code": "404",
+    "badge": "Không tìm thấy trang",
+    "title": "Lạc vào hư vô.",
+    "description": "Trang bạn đang tìm không tồn tại hoặc đã được chuyển đi nơi khác.",
+    "cta": "Về trang chủ"
+  },
+  "Error": {
+    "code": "error",
+    "badge": "Đã xảy ra lỗi",
+    "title": "Sự cố không mong muốn.",
+    "description": "Đã xảy ra lỗi khi tải trang này. Bạn có thể thử lại hoặc quay về trang chủ.",
+    "digest": "Mã lỗi",
+    "cta": "Thử lại",
+    "homeCta": "Quay về trang chủ"
+  }
+}
