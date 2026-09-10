@@ -29,23 +29,9 @@ Rakesite lets you build data extraction pipelines visually. Each workflow is a g
 - `Merge JSON` — combine multiple values into a single JSON object with custom keys
 - `Zip Arrays` — zip multiple arrays into an array of objects row by row
 
-**Execution engine**
+**Next features**
 
-- Topological execution order based on node dependencies
-- Per-phase logs with timestamps and log levels
-- Real-time execution viewer with polling
-- Credits consumed per task, deducted from user balance
-
-**Scheduling**
-
-- Set cron expressions per workflow
-- API endpoint `/api/workflows/cron` for external cron triggers (Vercel Cron, cron-job.org, etc.)
-
-**Execution history**
-
-- Full history per workflow with status, duration, credits
-- Drill into each phase to see inputs, outputs, and logs
-CRON_SECRET=
-```
-
-`CRON_SECRET` is used to authenticate requests to `/api/workflows/cron`. Set the same value in your cron service as a Bearer token.
+- [ ] Add preview UI when execute the workflow
+- [ ] Add cronjob to schedule your workflow automatically
+- [ ] Add credits required
+- [ ] Add connect to DB and query into your DB
