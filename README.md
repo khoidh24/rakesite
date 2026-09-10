@@ -45,26 +45,6 @@ Rakesite lets you build data extraction pipelines visually. Each workflow is a g
 
 - Full history per workflow with status, duration, credits
 - Drill into each phase to see inputs, outputs, and logs
-
-## Tech stack
-
-| Layer     | Technology                  |
-| --------- | --------------------------- |
-| Framework | Next.js 16 (App Router)     |
-| Database  | PostgreSQL + Prisma         |
-| Auth      | NextAuth.js                 |
-| Canvas    | React Flow                  |
-| Scraping  | Puppeteer                   |
-| UI        | shadcn/ui + Tailwind CSS v4 |
-| State     | TanStack Query              |
-| i18n      | next-intl (EN / VI)         |
-
-## Environment variables
-
-```env
-DATABASE_URL=
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=
 CRON_SECRET=
 ```
 
