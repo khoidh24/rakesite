@@ -3,16 +3,16 @@
 import { createFlowNode } from '@/lib/workflow/create-flow-node'
 import { isValidConnection } from '@/lib/workflow/edge-utils'
 import { HandleColors } from '@/lib/workflow/handle-colors'
+import { TaskRegistry } from '@/lib/workflow/task/registry'
 import { Workflow } from '@/prisma/generated/client'
-import { AppNode } from '@/types/app-node'
-import { TaskParamType, TaskType } from '@/types/task'
+import { AppEdge, AppNode } from '@/types/app-node'
+import { TaskType } from '@/types/task'
 import {
   addEdge,
   Background,
   BackgroundVariant,
   Connection,
   Controls,
-  Edge,
   ReactFlow,
   useEdgesState,
   useNodesState,
@@ -29,20 +29,24 @@ const edgeTypes = { status: StatusEdge }
 const snapGrid: [number, number] = [50, 50]
 const fitViewOpts = { padding: 1 }
 
+// Giữ đúng format id mặc định của `addEdge` để id edge đã lưu không thay đổi
+function getEdgeId(connection: Connection): string {
+  const { source, sourceHandle, target, targetHandle } = connection
+  return `xy-edge__${source}${sourceHandle ?? ''}-${target}${targetHandle ?? ''}`
+}
+
 function getEdgeColor(sourceNode: AppNode | undefined, sourceHandle: string | null): string {
   if (!sourceNode || !sourceHandle) return '#94a3b8'
-  const { TaskRegistry } = require('@/lib/workflow/task/registry')
   const task = TaskRegistry[sourceNode.data.type]
-  const output = task.outputs?.find(
-    (o: { name: string; type: TaskParamType }) => o.name === sourceHandle
-  )
+  const output = task.outputs?.find((o) => o.name === sourceHandle)
   return output ? HandleColors[output.type] : '#94a3b8'
 }
 
 export default function FlowCanvas({ workflow }: { workflow: Workflow }) {
-  const [nodes, setNodes, onNodesChange] = useNodesState([])
-  const [edges, setEdges, onEdgesChange] = useEdgesState([])
-  const { setViewport, screenToFlowPosition, addNodes, getNodes, getEdges } = useReactFlow()
+  const [nodes, setNodes, onNodesChange] = useNodesState<AppNode>([])
+  const [edges, setEdges, onEdgesChange] = useEdgesState<AppEdge>([])
+  const { setViewport, screenToFlowPosition, addNodes, getNodes, getEdges } =
+    useReactFlow<AppNode, AppEdge>()
   const clipboard = useRef<AppNode[]>([])
   const { init, snapshot, undo, redo } = useFlowHistory(setNodes, setEdges)
   const { setDirty } = useEditorContext()
@@ -56,20 +60,17 @@ export default function FlowCanvas({ workflow }: { workflow: Workflow }) {
         : [createFlowNode(TaskType.LAUNCH_BROWSER)]
 
       // Filter out edges with invalid handles
-      const { TaskRegistry } = require('@/lib/workflow/task/registry')
       const nodeMap = new Map(loadedNodes.map((n) => [n.id, n]))
-      const validEdges = (flow.edges || []).filter((e: Edge) => {
+      const validEdges = (flow.edges || []).filter((e: AppEdge) => {
         const sourceNode = nodeMap.get(e.source)
         const targetNode = nodeMap.get(e.target)
         if (!sourceNode || !targetNode) return false
         const sourceTask = TaskRegistry[sourceNode.data.type]
         const targetTask = TaskRegistry[targetNode.data.type]
-        const sourceHandleValid = sourceTask?.outputs?.some(
-          (o: { name: string }) => o.name === e.sourceHandle
-        )
+        const sourceHandleValid = sourceTask?.outputs?.some((o) => o.name === e.sourceHandle)
         const targetHandleValid =
           e.targetHandle?.startsWith('input_') ||
-          targetTask?.inputs?.some((i: { name: string }) => i.name === e.targetHandle)
+          targetTask?.inputs?.some((i) => i.name === e.targetHandle)
         return sourceHandleValid && targetHandleValid
       })
 
@@ -173,24 +174,23 @@ export default function FlowCanvas({ workflow }: { workflow: Workflow }) {
       const sourceNode = currentNodes.find((n) => n.id === connection.source)
       const color = getEdgeColor(sourceNode, connection.sourceHandle ?? null)
 
-      setEdges((eds) =>
-        addEdge(
-          {
-            ...connection,
-            type: 'status',
-            animated: false,
-            data: { status: 'idle' },
-            style: { stroke: color, strokeWidth: 2 },
-          } as Edge,
-          eds
-        )
-      )
+      const newEdge: AppEdge = {
+        ...connection,
+        id: getEdgeId(connection),
+        type: 'status',
+        animated: false,
+        data: { status: 'idle' },
+        style: { stroke: color, strokeWidth: 2 },
+      }
+
+      setEdges((eds) => addEdge(newEdge, eds))
     },
     [getNodes, getEdges, setEdges]
   )
 
   const validateConnection = useCallback(
-    (connection: Connection) => isValidConnection(connection, getNodes(), getEdges()),
+    (connection: Connection | AppEdge) =>
+      isValidConnection(connection, getNodes(), getEdges()),
     [getNodes, getEdges]
   )
 

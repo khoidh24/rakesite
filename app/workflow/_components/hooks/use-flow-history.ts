@@ -1,23 +1,21 @@
 'use client'
 
-import { useNodesState, useEdgesState } from '@xyflow/react'
-import { useCallback, useRef } from 'react'
-import { AppNode } from '@/types/app-node'
-import { Edge } from '@xyflow/react'
+import { Edge, Node } from '@xyflow/react'
+import { Dispatch, SetStateAction, useCallback, useRef } from 'react'
 
 const MAX_HISTORY = 50
 
-export function useFlowHistory(
-  setNodes: ReturnType<typeof useNodesState>[1],
-  setEdges: ReturnType<typeof useEdgesState>[1]
+export function useFlowHistory<N extends Node, E extends Edge>(
+  setNodes: Dispatch<SetStateAction<N[]>>,
+  setEdges: Dispatch<SetStateAction<E[]>>
 ) {
-  const history = useRef<{ nodes: AppNode[]; edges: Edge[] }[]>([])
+  const history = useRef<{ nodes: N[]; edges: E[] }[]>([])
   const pointer = useRef(-1)
   const isUndoRedo = useRef(false)
   const isReady = useRef(false)
 
   // Gọi 1 lần sau khi load xong để set baseline
-  const init = useCallback((nodes: AppNode[], edges: Edge[]) => {
+  const init = useCallback((nodes: N[], edges: E[]) => {
     history.current = [
       {
         nodes: JSON.parse(JSON.stringify(nodes)),
@@ -28,7 +26,7 @@ export function useFlowHistory(
     isReady.current = true
   }, [])
 
-  const snapshot = useCallback((nodes: AppNode[], edges: Edge[]): boolean => {
+  const snapshot = useCallback((nodes: N[], edges: E[]): boolean => {
     if (!isReady.current || isUndoRedo.current) return false
     history.current = history.current.slice(0, pointer.current + 1)
     history.current.push({

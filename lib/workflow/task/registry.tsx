@@ -9,7 +9,7 @@ import { MergeJsonTask } from './merge-json'
 import { ZipArraysTask } from './zip-arrays'
 import { TaskDefinition } from '@/types/task'
 
-export const TaskRegistry = {
+export const TaskRegistry: Record<TaskType, TaskDefinition> = {
   LAUNCH_BROWSER: launchBrowserTask,
   PAGE_TO_HTML: PageToHtmlTask,
   EXTRACT_TEXT: ExtractTextTask,
@@ -18,4 +18,4 @@ export const TaskRegistry = {
   ADD_PROPERTY: AddPropertyTask,
   MERGE_JSON: MergeJsonTask,
   ZIP_ARRAYS: ZipArraysTask,
-} satisfies Record<TaskType, TaskDefinition>
+}
